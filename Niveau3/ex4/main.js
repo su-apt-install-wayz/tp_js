@@ -8,6 +8,7 @@ const userConsole = readline.createInterface({
 userConsole.question('Veuillez saisir un nombre : ', (nombre) => {
     let decimal = parseInt(nombre)
 
+    // tableau de correspondance entre les nombres et la valeur en chiffre romain
     const romanNumerals = [
         { value: 1000, numeral: 'M' },
         { value: 900, numeral: 'CM' },
@@ -26,9 +27,13 @@ userConsole.question('Veuillez saisir un nombre : ', (nombre) => {
 
     let result = ''
 
+    // parcourir le tableau du dessus
     for (let i = 0; i < romanNumerals.length; i++) {
+        // tant que le nombre est supérieur à une valeur du tableau
         while (decimal >= romanNumerals[i].value) {
+            // on rajoute au result la valeur en chiffre romain
             result += romanNumerals[i].numeral
+            // ici, on enlève la valeur en chiffre pour continuer le while 
             decimal -= romanNumerals[i].value
         }
     }
